@@ -63,6 +63,11 @@ const cardNumberPattern = {
     },
     {
       mask: "0000 0000 0000 0000",
+      regex: /^6\d{0,15}/,
+      cardtype: "rocketseat"
+    },
+    {
+      mask: "0000 0000 0000 0000",
       cardtype: "default"
     }
   ],
@@ -89,14 +94,15 @@ const cardHolder = document.querySelector("#card-holder")
 cardHolder.addEventListener("input", () => {
   const ccHolder = document.querySelector(".cc-holder .value")
 
-  ccHolder.innerText = cardHolder.value.length === 0 ? "FULANO DA SILVA" : cardHolder.value
+  ccHolder.innerText =
+    cardHolder.value.length === 0 ? "FULANO DA SILVA" : cardHolder.value
 })
 
 securityCodeMasked.on("accept", () => {
   updateSecurotyCode(securityCodeMasked.value)
 })
 
-function updateSecurotyCode(code){
+function updateSecurotyCode(code) {
   const ccSecurity = document.querySelector(".cc-security .value")
 
   ccSecurity.innerText = code.length === 0 ? "123" : code
@@ -108,7 +114,7 @@ cardNumberMasked.on("accept", () => {
   updateCardNumber(cardNumberMasked.value)
 })
 
-function updateCardNumber(number){
+function updateCardNumber(number) {
   const ccNumber = document.querySelector(".cc-number")
   ccNumber.innerText = number.length === 0 ? "1234 5678 9012 3456" : number
 }
